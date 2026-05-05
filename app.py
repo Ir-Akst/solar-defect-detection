@@ -8,7 +8,7 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 app = FastAPI()
 
 # Load model once
-model = tf.keras.models.load_model("solar_defect_model_final.h5", compile=False)
+model = tf.keras.models.load_model("model.keras", compile=False)
 
 IMG_SIZE = 224
 THRESHOLD = 0.4  # your optimized threshold
