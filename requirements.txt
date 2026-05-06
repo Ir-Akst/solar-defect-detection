@@ -4,3 +4,4 @@ uvicorn
 numpy
 pillow
 h5py
+python-multipart
