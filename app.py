@@ -19,8 +19,9 @@ model = None
 @app.on_event("startup")
 def load_model():
     global model
-    print("Looking for model at:", MODEL_PATH)
-    print("Files:", os.listdir(BASE_DIR))
+    print("BASE_DIR:", BASE_DIR)
+    print("MODEL_PATH:", MODEL_PATH)
+    print("Files in BASE_DIR:", os.listdir(BASE_DIR))
     try:
         model = tf.keras.models.load_model(MODEL_PATH, compile=False)
         print("Model loaded successfully")
