@@ -12,8 +12,7 @@ app = FastAPI()
 IMG_SIZE = 224
 THRESHOLD = 0.4
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "model_saved")
-
+MODEL_PATH = os.path.join(BASE_DIR, "model_fixed.keras")
 model = None
 
 @app.on_event("startup")
