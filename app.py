@@ -7,9 +7,8 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 import os
 
 app = FastAPI()
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "model_fixed.h5")
+model = tf.saved_model.load("model_saved")
+model = tf.keras.models.load_model("model_saved", compile=False)
 IMG_SIZE = 224
 THRESHOLD = 0.4
 
