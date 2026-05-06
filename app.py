@@ -9,8 +9,7 @@ import os
 app = FastAPI()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "model.keras")
-
+MODEL_PATH = os.path.join(BASE_DIR, "model.h5")
 IMG_SIZE = 224
 THRESHOLD = 0.4
 
