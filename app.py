@@ -7,10 +7,12 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 import os
 
 app = FastAPI()
-model = tf.saved_model.load("model_saved")
-model = tf.keras.models.load_model("model_saved", compile=False)
+
+# Constants
 IMG_SIZE = 224
 THRESHOLD = 0.4
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "model_saved")
 
 model = None
 
@@ -44,15 +46,11 @@ def health():
 async def predict(file: UploadFile = File(...)):
     if model is None:
         return {"error": "Model not loaded"}
-
     contents = await file.read()
     image = Image.open(io.BytesIO(contents)).convert("RGB")
-
     img = preprocess_image(image)
     prob = model.predict(img)[0][0]
-
     prediction = "Defective" if prob > THRESHOLD else "Normal"
-
     return {
         "prediction": prediction,
         "probability": float(prob)
