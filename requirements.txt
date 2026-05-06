@@ -1,5 +1,6 @@
-streamlit
 tensorflow==2.19.0
+fastapi
+uvicorn
 numpy
 pillow
 h5py
